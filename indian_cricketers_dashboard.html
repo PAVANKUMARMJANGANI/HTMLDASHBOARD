@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Cricketers Performance Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(173, 216, 230, 0.8), rgba(240, 248, 255, 0.8));
+            backdrop-filter: blur(10px);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .chart {
+            width: 40%;
+            padding: 40px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        input {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Indian Cricketers Performance Dashboard</h1>
+    <input type="file" id="fileInput" accept=".json" />
+    <div class="container">
+        <div id="runs_vs_matches" class="chart"></div>
+        <div id="wickets_vs_avg" class="chart"></div>
+        <div id="role_distribution" class="chart"></div>
+        <div id="top_batsmen" class="chart"></div>
+        <div id="age_vs_performance" class="chart"></div>
+    </div>
+    
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const data = JSON.parse(e.target.result);
+                    generateDashboard(data);
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        function generateDashboard(data) {
+            // Runs Scored vs Matches Played
+            let players = data.map(d => d.Name);
+            let matches = data.map(d => d["Matches Played"]);
+            let runs = data.map(d => d["Runs Scored"]);
+            Plotly.newPlot("runs_vs_matches", [{ x: players, y: runs, type: "bar", name: "Runs Scored" }], { title: "Runs Scored vs Matches Played", xaxis: { title: "Players" }, yaxis: { title: "Runs Scored" } });
+            
+            // Wickets Taken vs Bowling Average
+            let wickets = data.map(d => d["Wickets Taken"]);
+            let bowlingAvg = data.map(d => d["Bowling Average"]);
+            Plotly.newPlot("wickets_vs_avg", [{ x: wickets, y: bowlingAvg, mode: "markers", type: "scatter", text: players }], { title: "Wickets Taken vs Bowling Average", xaxis: { title: "Wickets Taken" }, yaxis: { title: "Bowling Average" } });
+            
+            // Role-wise Distribution
+            let roleCounts = {};
+            data.forEach(d => roleCounts[d.Role] = (roleCounts[d.Role] || 0) + 1);
+            Plotly.newPlot("role_distribution", [{ labels: Object.keys(roleCounts), values: Object.values(roleCounts), type: "pie" }], { title: "Role-wise Distribution" });
+            
+            // Top 5 Batsmen by Batting Average
+            let topBatsmen = data.sort((a, b) => b["Batting Average"] - a["Batting Average"]).slice(0, 5);
+            Plotly.newPlot("top_batsmen", [{ x: topBatsmen.map(d => d.Name), y: topBatsmen.map(d => d["Batting Average"]), type: "bar" }], { title: "Top 5 Batsmen by Batting Average" });
+            
+            // Player Age vs Performance (Runs + Wickets)
+            let ages = data.map(d => d.Age);
+            let performance = data.map(d => d["Runs Scored"] + d["Wickets Taken"]);
+            Plotly.newPlot("age_vs_performance", [{ x: ages, y: performance, mode: "markers", type: "scatter", text: players }], { title: "Player Age vs Performance", xaxis: { title: "Age" }, yaxis: { title: "Performance (Runs + Wickets)" } });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+[
+  {
+    "Player ID": 1,
+    "Name": "Virat Kohli",
+    "Age": 35,
+    "Role": "Batsman",
+    "Matches Played": 500,
+    "Runs Scored": 25000,
+    "Wickets Taken": 10,
+    "Batting Average": 53.2,
+    "Bowling Average": 60.5
+  },
+  {
+    "Player ID": 2,
+    "Name": "Rohit Sharma",
+    "Age": 36,
+    "Role": "Batsman",
+    "Matches Played": 450,
+    "Runs Scored": 23000,
+    "Wickets Taken": 20,
+    "Batting Average": 48.5,
+    "Bowling Average": 45.2
+  },
+  {
+    "Player ID": 3,
+    "Name": "Jasprit Bumrah",
+    "Age": 30,
+    "Role": "Bowler",
+    "Matches Played": 200,
+    "Runs Scored": 1000,
+    "Wickets Taken": 400,
+    "Batting Average": 10.4,
+    "Bowling Average": 22.3
+  },
+  {
+    "Player ID": 4,
+    "Name": "KL Rahul",
+    "Age": 32,
+    "Role": "Batsman",
+    "Matches Played": 300,
+    "Runs Scored": 12000,
+    "Wickets Taken": 5,
+    "Batting Average": 45.3,
+    "Bowling Average": 50.4
+  },
+  {
+    "Player ID": 5,
+    "Name": "Ravindra Jadeja",
+    "Age": 35,
+    "Role": "All-rounder",
+    "Matches Played": 400,
+    "Runs Scored": 8000,
+    "Wickets Taken": 300,
+    "Batting Average": 35.8,
+    "Bowling Average": 28.9
+  },
+  {
+    "Player ID": 6,
+    "Name": "Shubman Gill",
+    "Age": 24,
+    "Role": "Batsman",
+    "Matches Played": 100,
+    "Runs Scored": 4500,
+    "Wickets Taken": 5,
+    "Batting Average": 50.5,
+    "Bowling Average": 55.3
+  },
+  {
+    "Player ID": 7,
+    "Name": "Suryakumar Yadav",
+    "Age": 33,
+    "Role": "Batsman",
+    "Matches Played": 150,
+    "Runs Scored": 5000,
+    "Wickets Taken": 10,
+    "Batting Average": 42.7,
+    "Bowling Average": 48.1
+  },
+  {
+    "Player ID": 8,
+    "Name": "Mohammed Shami",
+    "Age": 33,
+    "Role": "Bowler",
+    "Matches Played": 250,
+    "Runs Scored": 500,
+    "Wickets Taken": 350,
+    "Batting Average": 9.8,
+    "Bowling Average": 23.5
+  },
+  {
+    "Player ID": 9,
+    "Name": "Rishabh Pant",
+    "Age": 26,
+    "Role": "Wicketkeeper-Batsman",
+    "Matches Played": 150,
+    "Runs Scored": 4000,
+    "Wickets Taken": 2,
+    "Batting Average": 39.6,
+    "Bowling Average": 52.4
+  },
+  {
+    "Player ID": 10,
+    "Name": "Hardik Pandya",
+    "Age": 30,
+    "Role": "All-rounder",
+    "Matches Played": 200,
+    "Runs Scored": 3500,
+    "Wickets Taken": 150,
+    "Batting Average": 37.2,
+    "Bowling Average": 29.5
+  }
+]
